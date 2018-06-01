@@ -49,7 +49,7 @@ public class Mundo {
 
     @Override
     public String toString() {
-        return "Mundo{" + "nombre=" + nombre + ", peso=" + peso + ", edad=" + edad + '}';
+        return nombre;
     }
 
    

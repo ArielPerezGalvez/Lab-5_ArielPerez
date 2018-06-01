@@ -82,7 +82,7 @@ public class Criaturas {
 
     @Override
     public String toString() {
-        return "Criaturas{" + "raza=" + raza + ", energia=" + energia + ", edad=" + edad + ", nombre_region=" + nombre_region + ", cantidad=" + cantidad + ", peso=" + peso + '}';
+        return raza;
     }
     
     

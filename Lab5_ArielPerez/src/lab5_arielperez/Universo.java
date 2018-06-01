@@ -9,8 +9,9 @@ package lab5_arielperez;
  *
  * @author ariel
  */
-public class Objetos_magicos {
+public class Universo {
     
     
     
-}
+    
+}//fin de la clase

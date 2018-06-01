@@ -5,6 +5,8 @@
  */
 package lab5_arielperez;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -65,13 +67,23 @@ public class Inicio extends javax.swing.JFrame {
         cambio1 = new javax.swing.JMenuItem();
         cambios2 = new javax.swing.JMenuItem();
         cambio3 = new javax.swing.JMenuItem();
+        universe = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        codigo = new javax.swing.JTextField();
+        edad_universo = new javax.swing.JTextField();
+        peso_universo = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         mundo_disco = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        criaturas = new javax.swing.JList<>();
+        crear_criatura = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jLabel3 = new javax.swing.JLabel();
@@ -80,6 +92,7 @@ public class Inicio extends javax.swing.JFrame {
         llenado = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setForeground(new java.awt.Color(102, 102, 102));
@@ -289,22 +302,126 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         agregar.setText("Agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
+            }
+        });
         cambios.add(agregar);
 
         modificar.setText("Modificar");
         cambios.add(modificar);
 
         eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
         cambios.add(eliminar);
 
         cambio1.setText("Agregar");
+        cambio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambio1ActionPerformed(evt);
+            }
+        });
         cambio2.add(cambio1);
 
         cambios2.setText("Modificar");
         cambio2.add(cambios2);
 
         cambio3.setText("Eliminar");
+        cambio3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambio3ActionPerformed(evt);
+            }
+        });
         cambio2.add(cambio3);
+
+        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel17.setText("Crear universo");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel18.setText("Codigo del universo");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel19.setText("Edad del universo");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel20.setText("Peso del universo");
+
+        jButton5.setText("Guardar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel17))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(peso_universo, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(edad_universo)
+                            .addComponent(codigo))))
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(47, 47, 47))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(edad_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(peso_universo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(29, 29, 29))
+        );
+
+        javax.swing.GroupLayout universeLayout = new javax.swing.GroupLayout(universe.getContentPane());
+        universe.getContentPane().setLayout(universeLayout);
+        universeLayout.setHorizontalGroup(
+            universeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        universeLayout.setVerticalGroup(
+            universeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -316,6 +433,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setText("Bienvenido a nuestra Galaxia");
 
+        mundo_disco.setModel(new DefaultListModel());
         mundo_disco.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mundo_discoMouseClicked(evt);
@@ -323,12 +441,13 @@ public class Inicio extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(mundo_disco);
 
-        criaturas.addMouseListener(new java.awt.event.MouseAdapter() {
+        crear_criatura.setModel(new DefaultListModel());
+        crear_criatura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                criaturasMouseClicked(evt);
+                crear_criaturaMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(criaturas);
+        jScrollPane2.setViewportView(crear_criatura);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Universo");
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
@@ -364,6 +483,13 @@ public class Inicio extends javax.swing.JFrame {
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
+            }
+        });
+
+        jButton6.setText("Editar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
             }
         });
 
@@ -405,12 +531,13 @@ public class Inicio extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jButton2)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addGap(87, 87, 87))))))
+                                .addComponent(jLabel5)))
+                        .addGap(87, 87, 87))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jButton4)
@@ -437,7 +564,8 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(llenado)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(19, 19, 19))
@@ -458,19 +586,28 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        if (nombre.getText().equals(nombre_tortu) && pesos.getText().equals(peso) && edadd.getText().equals(edad)) {
-            JOptionPane.showMessageDialog(this, "Todo esta vacio, Ingrese los parametros");
-        } else {
-            llenar_mundo.setVisible(false);
-            nombre.setText("");
-            pesos.setText("");
-            edadd.setText("");
-        }
+        try {
+            if (nombre.getText().equals(nombre_tortu) && pesos.getText().equals(peso) && edadd.getText().equals(edad)) {
+                JOptionPane.showMessageDialog(this, "Todo esta vacio, Ingrese los parametros");
+            } else {
+                DefaultListModel modelo = (DefaultListModel) mundo_disco.getModel();
+                modelo.addElement(new Mundo(nombre.getText(), pesos.getText(), edadd.getText()));
+                nombre.setText("");
+                pesos.setText("");
+                edadd.setText("");
 
+                llenar_mundo.setVisible(false);
+                mundo_disco.setModel(modelo);
+
+            }
+        } catch (Exception e) {
+
+        }
 
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void llenadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llenadoMouseClicked
+
         llenar_mundo.setModal(true);
         llenar_mundo.pack();
         llenar_mundo.setLocationRelativeTo(this);
@@ -480,10 +617,15 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_llenadoMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        crear.setModal(true);
-        crear.pack();
-        crear.setLocationRelativeTo(this);
-        crear.setVisible(true);
+
+        try {
+            crear.setModal(true);
+            crear.pack();
+            crear.setLocationRelativeTo(this);
+            crear.setVisible(true);
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -492,6 +634,10 @@ public class Inicio extends javax.swing.JFrame {
 
         } else {
 
+            DefaultListModel model = (DefaultListModel) crear_criatura.getModel();
+            model.addElement(new Criaturas(raza.getText(), energia.getText(), años.getText(), region.getText(), especies.getText(), peso_cri.getText()));//ultimo;
+            crear.setVisible(false);
+            crear_criatura.setModel(model);
             raza.setText("");
             energia.setText("");
             años.setText("");
@@ -510,15 +656,72 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mundo_discoMouseClicked
 
-    private void criaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_criaturasMouseClicked
+    private void crear_criaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_criaturaMouseClicked
         if (evt.isMetaDown()) {
             cambio2.show(evt.getComponent(), evt.getX(), evt.getY());
         }
-    }//GEN-LAST:event_criaturasMouseClicked
+    }//GEN-LAST:event_crear_criaturaMouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        if (codigo.getText().equals(p1) && edad_universo.getText().equals(p2)) {
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
+
+        } else {
+            universe.setVisible(false);
+
+            codigo.setText("");
+            edad_universo.setText("");
+            peso_universo.setText("");
+        }
+
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        universe.setModal(true);
+        universe.pack();
+        universe.setLocationRelativeTo(this);
+        universe.setVisible(true);
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        String n = JOptionPane.showInputDialog("Ingrese el nombre de la tortuga");
+        String m = JOptionPane.showInputDialog("Ingrese el peso de la tortuga");
+        String b = JOptionPane.showInputDialog("Ingrese la edad de la tortuga");
+        DefaultListModel modelo = (DefaultListModel) mundo_disco.getModel();
+        modelo.addElement(new Mundo(n, m, b));
+
+    }//GEN-LAST:event_agregarActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        DefaultListModel modelo = (DefaultListModel) mundo_disco.getModel();
+        for (int i = 0; i < modelo.size(); i++) {
+            int n = Integer.parseInt(JOptionPane.showInputDialog("Que posicion desea eliminar::"));
+            modelo.remove(n);
+        }
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void cambio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambio1ActionPerformed
+        String g = JOptionPane.showInputDialog("Ingrese la raza");
+        String a = JOptionPane.showInputDialog("Ingrese la energia");
+        String p = JOptionPane.showInputDialog("Ingrese el numero de años");
+        String q = JOptionPane.showInputDialog("Ingrese la region");
+        String w = JOptionPane.showInputDialog("Ingrese cantidad vivas de especie");
+        String s = JOptionPane.showInputDialog("Ingrese el peso");
+        DefaultListModel modelo = (DefaultListModel) crear_criatura.getModel();
+        modelo.addElement(new Criaturas(g, a, p, q, w, s));
+    }//GEN-LAST:event_cambio1ActionPerformed
+
+    private void cambio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambio3ActionPerformed
+        DefaultListModel modelo = (DefaultListModel) crear_criatura.getModel();
+        for (int i = 0; i < modelo.size(); i++) {
+            int n = Integer.parseInt(JOptionPane.showInputDialog("Que posicion desea eliminar::"));
+            modelo.remove(n);
+        }
+    }//GEN-LAST:event_cambio3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,16 +737,24 @@ public class Inicio extends javax.swing.JFrame {
                 if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -563,8 +774,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem cambio3;
     private javax.swing.JPopupMenu cambios;
     private javax.swing.JMenuItem cambios2;
+    private javax.swing.JTextField codigo;
     private javax.swing.JDialog crear;
-    private javax.swing.JList<String> criaturas;
+    private javax.swing.JList<String> crear_criatura;
+    private javax.swing.JTextField edad_universo;
     private javax.swing.JTextField edadd;
     private javax.swing.JMenuItem eliminar;
     private javax.swing.JTextField energia;
@@ -573,6 +786,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -581,7 +796,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -592,6 +811,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -602,9 +822,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JList<String> mundo_disco;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField peso_cri;
+    private javax.swing.JTextField peso_universo;
     private javax.swing.JTextField pesos;
     private javax.swing.JTextField raza;
     private javax.swing.JTextField region;
+    private javax.swing.JDialog universe;
     // End of variables declaration//GEN-END:variables
  String nombre_tortu = "", peso = "", edad = "";
     String p1 = "", p2 = "", p3 = "", p4 = "", p5 = "";

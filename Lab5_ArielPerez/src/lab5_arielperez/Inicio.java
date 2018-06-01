@@ -635,12 +635,14 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void llenadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_llenadoMouseClicked
+        try {
+            llenar_mundo.setModal(true);
+            llenar_mundo.pack();
+            llenar_mundo.setLocationRelativeTo(this);
+            llenar_mundo.setVisible(true);
+        } catch (Exception e) {
 
-        llenar_mundo.setModal(true);
-        llenar_mundo.pack();
-        llenar_mundo.setLocationRelativeTo(this);
-        llenar_mundo.setVisible(true);
-
+        }
 
     }//GEN-LAST:event_llenadoMouseClicked
 
@@ -657,25 +659,29 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        if (raza.getText().equals(p1) && energia.getText().equals(p2) && años.getText().equals(p3) && region.getText().equals(p4) && especies.getText().equals(p5)) {
-            JOptionPane.showMessageDialog(this, "No ha llenado nada, Ingrese lo que se le pide");
-        } else {
-            DefaultListModel model = (DefaultListModel) crear_criatura.getModel();
-            model.addElement(new Criaturas(raza.getText(), energia.getText(), años.getText(), region.getText(), especies.getText(), peso_cri.getText()));//ultimo;
-            peso_criaturas += Double.parseDouble(especies.getText());
-            peso_normal = Double.parseDouble(peso_cri.getText());
-            total = Double.toString((peso_tortuga * peso_normal) + peso_criaturas);
-            peso_universo.setText(total);
-            peso_universo.setText(total);
-            crear.setVisible(false);
-            raza.setText("");
-            energia.setText("");
-            años.setText("");
-            region.setText("");
-            especies.setText("");
-            peso_cri.setText("");
-            crear.setVisible(false);
-            crear_criatura.setModel(model);
+        try {
+            if (raza.getText().equals(p1) && energia.getText().equals(p2) && años.getText().equals(p3) && region.getText().equals(p4) && especies.getText().equals(p5)) {
+                JOptionPane.showMessageDialog(this, "No ha llenado nada, Ingrese lo que se le pide");
+            } else {
+                DefaultListModel model = (DefaultListModel) crear_criatura.getModel();
+                model.addElement(new Criaturas(raza.getText(), energia.getText(), años.getText(), region.getText(), especies.getText(), peso_cri.getText()));//ultimo;
+                peso_criaturas += Double.parseDouble(especies.getText());
+                peso_normal = Double.parseDouble(peso_cri.getText());
+                total = Double.toString((peso_tortuga * peso_normal) + peso_criaturas);
+                peso_universo.setText(total);
+                peso_universo.setText(total);
+                crear.setVisible(false);
+                raza.setText("");
+                energia.setText("");
+                años.setText("");
+                region.setText("");
+                especies.setText("");
+                peso_cri.setText("");
+                crear.setVisible(false);
+                crear_criatura.setModel(model);
+            }
+        } catch (Exception e) {
+
         }
 
 
@@ -698,15 +704,18 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        if (codigo.getText().equals(p1) && edad_universo.getText().equals(p2)) {
-            JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
+        try {
+            if (codigo.getText().equals(p1) && edad_universo.getText().equals(p2)) {
+                JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
 
-        } else {
-            universe.setVisible(false);
+            } else {
+                universe.setVisible(false);
 
-            codigo.setText("");
-            edad_universo.setText("");
-            peso_universo.setText("");
+                codigo.setText("");
+                edad_universo.setText("");
+                peso_universo.setText("");
+            }
+        } catch (Exception e) {
         }
 
     }//GEN-LAST:event_jButton5MouseClicked
@@ -719,57 +728,80 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        try{
         String n = JOptionPane.showInputDialog("Ingrese el nombre de la tortuga");
         String m = JOptionPane.showInputDialog("Ingrese el peso de la tortuga");
         String b = JOptionPane.showInputDialog("Ingrese la edad de la tortuga");
         DefaultListModel modelo = (DefaultListModel) mundo_disco.getModel();
         modelo.addElement(new Mundo(n, m, b));
-
+        }catch(Exception e){
+        
+        }
     }//GEN-LAST:event_agregarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        DefaultListModel modelo = (DefaultListModel) mundo_disco.getModel();
-        for (int i = 0; i < modelo.size(); i++) {
-            int n = Integer.parseInt(JOptionPane.showInputDialog("Que posicion desea eliminar::"));
-            modelo.remove(n);
+        try {
+            DefaultListModel modelo = (DefaultListModel) mundo_disco.getModel();
+            for (int i = 0; i < modelo.size(); i++) {
+                int n = Integer.parseInt(JOptionPane.showInputDialog("Que posicion desea eliminar::"));
+                modelo.remove(n);
+            }
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void cambio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambio1ActionPerformed
-        String g = JOptionPane.showInputDialog("Ingrese la raza");
-        String a = JOptionPane.showInputDialog("Ingrese la energia");
-        String p = JOptionPane.showInputDialog("Ingrese el numero de años");
-        String q = JOptionPane.showInputDialog("Ingrese la region");
-        String w = JOptionPane.showInputDialog("Ingrese cantidad vivas de especie");
-        String s = JOptionPane.showInputDialog("Ingrese el peso");
-        DefaultListModel modelo = (DefaultListModel) crear_criatura.getModel();
-        modelo.addElement(new Criaturas(g, a, p, q, w, s));
+        try {
+            String g = JOptionPane.showInputDialog("Ingrese la raza");
+            String a = JOptionPane.showInputDialog("Ingrese la energia");
+            String p = JOptionPane.showInputDialog("Ingrese el numero de años");
+            String q = JOptionPane.showInputDialog("Ingrese la region");
+            String w = JOptionPane.showInputDialog("Ingrese cantidad vivas de especie");
+            String s = JOptionPane.showInputDialog("Ingrese el peso");
+            DefaultListModel modelo = (DefaultListModel) crear_criatura.getModel();
+            modelo.addElement(new Criaturas(g, a, p, q, w, s));
+        } catch (Exception e) {
+            
+        }
     }//GEN-LAST:event_cambio1ActionPerformed
 
     private void cambio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambio3ActionPerformed
-        DefaultListModel modelo = (DefaultListModel) crear_criatura.getModel();
-        for (int i = 0; i < modelo.size(); i++) {
-            int n = Integer.parseInt(JOptionPane.showInputDialog("Que posicion desea eliminar::"));
-            modelo.remove(n);
+        try {
+            DefaultListModel modelo = (DefaultListModel) crear_criatura.getModel();
+            for (int i = 0; i < modelo.size(); i++) {
+                int n = Integer.parseInt(JOptionPane.showInputDialog("Que posicion desea eliminar::"));
+                modelo.remove(n);
+            }
+        } catch (Exception e) {
+
         }
+
     }//GEN-LAST:event_cambio3ActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        DefaultListModel model = (DefaultListModel) mundo_disco.getModel();
-        for (int i = 0; i < model.size(); i++) {
-            int n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posicion a cambiar"));
-            String a = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
-            model.setElementAt(a, n);
+        try {
+            DefaultListModel model = (DefaultListModel) mundo_disco.getModel();
+            for (int i = 0; i < model.size(); i++) {
+                int n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posicion a cambiar"));
+                String a = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                model.setElementAt(a, n);
+            }
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_modificarActionPerformed
 
     private void cambios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambios2ActionPerformed
+        try {
+            DefaultListModel model = (DefaultListModel) crear_criatura.getModel();
+            for (int i = 0; i < model.size(); i++) {
+                int n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posicion a cambiar"));
+                String a = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                model.setElementAt(a, n);
+            }
+        } catch (Exception e) {
 
-        DefaultListModel model = (DefaultListModel) crear_criatura.getModel();
-        for (int i = 0; i < model.size(); i++) {
-            int n = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posicion a cambiar"));
-            String a = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
-            model.setElementAt(a, n);
         }
 
     }//GEN-LAST:event_cambios2ActionPerformed

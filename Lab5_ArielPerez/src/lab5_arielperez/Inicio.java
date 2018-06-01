@@ -621,13 +621,12 @@ public class Inicio extends javax.swing.JFrame {
             } else {
                 DefaultListModel modelo = (DefaultListModel) mundo_disco.getModel();
                 modelo.addElement(new Mundo(nombre.getText(), pesos.getText(), edadd.getText()));
+                peso_tortuga += Double.parseDouble(pesos.getText());
                 nombre.setText("");
                 pesos.setText("");
                 edadd.setText("");
-
                 llenar_mundo.setVisible(false);
                 mundo_disco.setModel(modelo);
-
             }
         } catch (Exception e) {
 
@@ -660,13 +659,15 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         if (raza.getText().equals(p1) && energia.getText().equals(p2) && años.getText().equals(p3) && region.getText().equals(p4) && especies.getText().equals(p5)) {
             JOptionPane.showMessageDialog(this, "No ha llenado nada, Ingrese lo que se le pide");
-
         } else {
-
             DefaultListModel model = (DefaultListModel) crear_criatura.getModel();
             model.addElement(new Criaturas(raza.getText(), energia.getText(), años.getText(), region.getText(), especies.getText(), peso_cri.getText()));//ultimo;
+            peso_criaturas += Double.parseDouble(especies.getText());
+            peso_normal = Double.parseDouble(peso_cri.getText());
+            total = Double.toString((peso_tortuga * peso_normal) + peso_criaturas);
+            peso_universo.setText(total);
+            peso_universo.setText(total);
             crear.setVisible(false);
-            crear_criatura.setModel(model);
             raza.setText("");
             energia.setText("");
             años.setText("");
@@ -674,6 +675,7 @@ public class Inicio extends javax.swing.JFrame {
             especies.setText("");
             peso_cri.setText("");
             crear.setVisible(false);
+            crear_criatura.setModel(model);
         }
 
 
@@ -759,8 +761,6 @@ public class Inicio extends javax.swing.JFrame {
             String a = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
             model.setElementAt(a, n);
         }
-
-
     }//GEN-LAST:event_modificarActionPerformed
 
     private void cambios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambios2ActionPerformed
@@ -775,39 +775,36 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cambios2ActionPerformed
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        try{
-        if (crear_criatura.getSelectedIndex() >= 0 || mundo_disco.getSelectedIndex() >= 0) {
-            DefaultTreeModel modeloU = (DefaultTreeModel) arbol.getModel();
-            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloU.getRoot();
-            DefaultListModel modeloC = (DefaultListModel) crear_criatura.getModel();
-            DefaultListModel modeloM = (DefaultListModel) mundo_disco.getModel();
-            Criaturas c = (Criaturas) modeloC.get(crear_criatura.getSelectedIndex());
-            Mundo m = (Mundo) modeloM.get(mundo_disco.getSelectedIndex());
-            int centinela = -1;
-            for (int i = 0; i < raiz.getChildCount(); i++) {
-                if (raiz.getChildAt(i).toString().equals(m.toString())) {
-
-                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(c);
-                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
-                    centinela = 1;
-
+        try {
+            if (crear_criatura.getSelectedIndex() >= 0 || mundo_disco.getSelectedIndex() >= 0) {
+                DefaultTreeModel modeloU = (DefaultTreeModel) arbol.getModel();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloU.getRoot();
+                DefaultListModel modeloC = (DefaultListModel) crear_criatura.getModel();
+                DefaultListModel modeloM = (DefaultListModel) mundo_disco.getModel();
+                Criaturas c = (Criaturas) modeloC.get(crear_criatura.getSelectedIndex());
+                Mundo m = (Mundo) modeloM.get(mundo_disco.getSelectedIndex());
+                int centinela = -1;
+                for (int i = 0; i < raiz.getChildCount(); i++) {
+                    if (raiz.getChildAt(i).toString().equals(m.toString())) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(c);
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        centinela = 1;
+                    }
                 }
+                if (centinela == -1) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(m);
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(c);
+                    n.add(p);
+                    raiz.add(n);
+                }
+                modeloU.reload();
+                modeloC.remove(crear_criatura.getSelectedIndex());
+                modeloM.remove(mundo_disco.getSelectedIndex());
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay nada seleccionado");
             }
-            if (centinela == -1) {
-                DefaultMutableTreeNode n = new DefaultMutableTreeNode(m);
-                DefaultMutableTreeNode p = new DefaultMutableTreeNode(c);
-                n.add(p);
-                raiz.add(n);
+        } catch (Exception e) {
 
-            }
-            modeloU.reload();
-            modeloC.remove(crear_criatura.getSelectedIndex());
-            modeloM.remove(mundo_disco.getSelectedIndex());
-        } else {
-            JOptionPane.showMessageDialog(this, "No hay nada seleccionado");
-        }
-        }catch(Exception e){
-        
         }
     }//GEN-LAST:event_jButton7MouseClicked
 
@@ -919,4 +916,8 @@ public class Inicio extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
  String nombre_tortu = "", peso = "", edad = "";
     String p1 = "", p2 = "", p3 = "", p4 = "", p5 = "";
+    double peso_criaturas;
+    double peso_tortuga;
+    String total;
+    double peso_normal;
 }

@@ -11,4 +11,5 @@ package lab5_arielperez;
  */
 public class Objetos_magicos {
     
+    
 }

@@ -17,17 +17,9 @@ public class Criaturas {
     private int edad;
     private String nombre_region;
     private int cantidad;
+    private double peso;
     ArrayList<Objetos_magicos> lis = new ArrayList();
 
-    public Criaturas() {
-    }
-
-    public Criaturas(String raza, String energia, int edad, String nombre_region, int cantidad) {
-        this.raza = raza;
-        this.energia = energia;
-        this.edad = edad;
-        this.nombre_region = nombre_region;
-        this.cantidad = cantidad;
-    }
+  
     
 }
